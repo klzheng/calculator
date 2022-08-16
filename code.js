@@ -1,6 +1,7 @@
 let previousNumber = "";
 let currentNumber = "";
 let operation = "";
+let calculated = "on";
 
 const numberButtons = document.querySelectorAll(".number")
 const operatorButtons = document.querySelectorAll(".operator")
@@ -28,18 +29,30 @@ numberButtons.forEach((number) => number.addEventListener("click", () => appendN
 
 
 function appendNumber(number) {
+    if (screen.textContent == "0" || calculated == "off"){
+        screen.textContent = ""
+        calculated = "on"
+    }
     if (screen.textContent.length < 12){
         screen.textContent += number
         if (miniScreen.textContent.includes("=") === false) {
             miniScreen.textContent += number
-        } 
+        } else if (miniScreen.textContent.includes("=") === true) {
+            miniScreen.textContent = "" + number
+        }
     }
 }
 
 function deleteInput() {
     screen.textContent = screen.textContent.slice(0,-1)
+    if (miniScreen.textContent.slice(-1) == " ") {
+        miniScreen.textContent = miniScreen.textContent.slice(0,-1)
+    }
     if (miniScreen.textContent.includes("=") === false) {
         miniScreen.textContent = miniScreen.textContent.slice(0,-1)
+    }
+    if (screen.textContent == "") {
+        miniScreen.textContent = ""
     }
 }
 
@@ -58,16 +71,39 @@ function storeSetClearDisplay() {
 }
 
 function addDecimal() {
-    switch (screen.textContent.includes(".")) {
-        case false:
+    if (screen.textContent.includes(".") == false) {
+        if (screen.textContent == "") {
+            screen.textContent += "0."
+            miniScreen.textContent += "0."
+        } else {
             screen.textContent += "."
             miniScreen.textContent += "."
+        }
     }
 }
 
+function operatorCheck() {
+    if (miniScreen.textContent.charAt(miniScreen.textContent.length-2) != "+" && 
+        miniScreen.textContent.charAt(miniScreen.textContent.length-2) != "−" && 
+        miniScreen.textContent.charAt(miniScreen.textContent.length-2) != "×" && 
+        miniScreen.textContent.charAt(miniScreen.textContent.length-2) != "÷") {
+        return true
+    }
+    return false
+}
+
+function operatorInCheck() {
+    if (screen.textContent.includes("+") == false && 
+        screen.textContent.includes("−") == false && 
+        screen.textContent.includes("×") == false &&  
+        screen.textContent.includes("÷") == false) {
+        return true
+    }
+    return false
+}
+
 function add() {
-    if (miniScreen.textContent.includes("+") === false || 
-        miniScreen.textContent.charAt(miniScreen.textContent.length-1) != "+") {
+    if (operatorCheck()) {
         if (operation == "") {
             operation = "add"
             storeSetClearDisplay()
@@ -78,8 +114,7 @@ function add() {
 }
 
 function subtract() {
-    if (miniScreen.textContent.includes("−") === false || 
-        miniScreen.textContent.charAt(miniScreen.textContent.length-1) != "−"){
+    if (operatorCheck()){
         if (operation == "") {
             operation = "subtract"
             storeSetClearDisplay()
@@ -90,8 +125,7 @@ function subtract() {
 }
 
 function multiply() {
-    if (miniScreen.textContent.includes("×") === false || 
-        miniScreen.textContent.charAt(miniScreen.textContent.length-1) != "×") {
+    if (operatorCheck()) {
         if (operation == "") {
             operation = "multiply"
             storeSetClearDisplay()
@@ -102,8 +136,7 @@ function multiply() {
 }
 
 function divide() {
-    if (miniScreen.textContent.includes("÷") === false || 
-        miniScreen.textContent.charAt(miniScreen.textContent.length-1) != "÷") {
+    if (operatorCheck()) {
         if (operation == "") {
             operation = "divide"
             storeSetClearDisplay()
@@ -115,22 +148,23 @@ function divide() {
 
 function evaluate() {
     currentNumber = (Number(screen.textContent))
-    if (miniScreen.textContent.includes("=") === false) {
+    if (miniScreen.textContent.includes("=") === false && operatorCheck() && operatorInCheck()) {
         switch (operation) {
             case ("add"): 
-                screen.textContent = parseFloat((previousNumber + currentNumber).toFixed(4))
+                screen.textContent = parseFloat((previousNumber + currentNumber).toFixed(5))
                 break;
             case ("subtract"):
-                screen.textContent = parseFloat((previousNumber - currentNumber).toFixed(4))
+                screen.textContent = parseFloat((previousNumber - currentNumber).toFixed(5))
                 break;
             case ("multiply"):
-                screen.textContent = parseFloat(Math.round((previousNumber * currentNumber)*10000)/10000)
+                screen.textContent = parseFloat((previousNumber * currentNumber).toFixed(5))
                 break;
             case ("divide"):
-                screen.textContent = parseFloat(Math.round((previousNumber / currentNumber)*10000)/10000)
+                screen.textContent = parseFloat((previousNumber / currentNumber).toFixed(5))
         }
         operation = ""
         miniScreen.textContent += " = "
+        calculated = "off"
     }
 }
 
