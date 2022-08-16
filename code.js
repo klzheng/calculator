@@ -15,6 +15,7 @@ const multiplyButton = document.querySelector(".multiply")
 const divideButton = document.querySelector(".divide")
 const evaluateButton = document.querySelector(".evaluate")
 
+
 decimalButton.addEventListener("click", () => addDecimal())
 addButton.addEventListener("click", () => add())
 subtractButton.addEventListener("click", () => subtract())
@@ -23,13 +24,13 @@ divideButton.addEventListener("click", () => divide())
 evaluateButton.addEventListener("click", () => evaluate())
 deleteButton.addEventListener("click", () => deleteInput())
 clearButton.addEventListener("click", () => clearAll())
-numberButtons.forEach((number) => number.addEventListener("click", () => appendNumber(number)))
+numberButtons.forEach((number) => number.addEventListener("click", () => appendNumber(number.value)))
 
 
 function appendNumber(number) {
-    screen.textContent += number.value
+    screen.textContent += number
     if (miniScreen.textContent.includes("=") === false) {
-        miniScreen.textContent += number.value
+        miniScreen.textContent += number
     } 
 }
 
@@ -55,10 +56,11 @@ function storeSetClearDisplay() {
 }
 
 function addDecimal() {
-    if (screen.textContent.includes(".") === false) {
-        screen.textContent += "."
-        miniScreen.textContent += "."
-    }   
+    switch (screen.textContent.includes(".")) {
+        case false:
+            screen.textContent += "."
+            miniScreen.textContent += "."
+    }
 }
 
 function add() {
@@ -130,3 +132,37 @@ function evaluate() {
     }
 }
 
+
+window.addEventListener("keydown", (event) => {
+    let button = event.key
+    switch (isNaN(button)) {
+        case false:
+            appendNumber(button)
+    }
+    switch (button) {
+        case "+":
+            add()
+            break
+        case "-":
+            subtract()
+            break
+        case "/":
+            divide()
+            break;
+        case "*":
+            multiply()
+            break
+        case ".":
+            addDecimal()
+            break
+        case "Enter":
+            evaluate()
+            break
+        case "Delete":
+            clearAll()
+            break
+        case "Backspace":
+            deleteInput()
+            break
+    }
+})
