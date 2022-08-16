@@ -9,19 +9,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="display">
-        <div>
-            <p class="mini-screen"></p>
+    
+    <div class="calculator-frame">
+        <div class="display">
+            <div>
+                <p class="mini-screen"></p>
+            </div>
+            <p class="screen"></p>
         </div>
-        <p class="screen"></p>
-    </div>
 
-    <!-- 
-    document.querySelector('.screen').textContent += '7';
-    document.querySelector('.mini-screen').textContent += '7' 
-    -->
-
-    <div class="calculator">
+        <div class="calculator">
             <input onclick="" type="button" value="DELETE" class="button wide delete">
             <input onclick="" type="button" value="CLEAR" class="button wide clear">
         
@@ -38,12 +35,14 @@
             <input onclick="" type="button" value="1" class="button number">
             <input onclick="" type="button" value="2" class="button number">
             <input onclick="" type="button" value="3" class="button number">
-            <input onclick="" type="button" value="-" class="button operator subtract">
+            <input onclick="" type="button" value="−" class="button operator subtract">
         
-            <input onclick="" type="button" value="0" class="button number">
             <input onclick="" type="button" value="." class="button decimal">
+            <input onclick="" type="button" value="0" class="button number">
             <input onclick="" type="button" value="=" class="button evaluate">
             <input onclick="" type="button" value="+" class="button operator add">
+        </div>
     </div>
+
 </body>
 </html>

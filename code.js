@@ -28,10 +28,12 @@ numberButtons.forEach((number) => number.addEventListener("click", () => appendN
 
 
 function appendNumber(number) {
-    screen.textContent += number
-    if (miniScreen.textContent.includes("=") === false) {
-        miniScreen.textContent += number
-    } 
+    if (screen.textContent.length < 12){
+        screen.textContent += number
+        if (miniScreen.textContent.includes("=") === false) {
+            miniScreen.textContent += number
+        } 
+    }
 }
 
 function deleteInput() {
@@ -69,19 +71,19 @@ function add() {
         if (operation == "") {
             operation = "add"
             storeSetClearDisplay()
-            miniScreen.textContent += "+"
+            miniScreen.textContent += " + "
             return
         } evaluate()
     }
 }
 
 function subtract() {
-    if (miniScreen.textContent.includes("-") === false || 
-        miniScreen.textContent.charAt(miniScreen.textContent.length-1) != "-"){
+    if (miniScreen.textContent.includes("−") === false || 
+        miniScreen.textContent.charAt(miniScreen.textContent.length-1) != "−"){
         if (operation == "") {
             operation = "subtract"
             storeSetClearDisplay()
-            miniScreen.textContent += "-"
+            miniScreen.textContent += " − "
             return
         } evaluate()
     }
@@ -93,7 +95,7 @@ function multiply() {
         if (operation == "") {
             operation = "multiply"
             storeSetClearDisplay()
-            miniScreen.textContent += "×"
+            miniScreen.textContent += " × "
             return
         } evaluate()
     }
@@ -105,7 +107,7 @@ function divide() {
         if (operation == "") {
             operation = "divide"
             storeSetClearDisplay()
-            miniScreen.textContent += "÷"
+            miniScreen.textContent += " ÷ "
             return
         } evaluate()
     }
@@ -122,13 +124,13 @@ function evaluate() {
                 screen.textContent = parseFloat((previousNumber - currentNumber).toFixed(4))
                 break;
             case ("multiply"):
-                screen.textContent = parseFloat((previousNumber * currentNumber).toFixed(4))
+                screen.textContent = parseFloat(Math.round((previousNumber * currentNumber)*10000)/10000)
                 break;
             case ("divide"):
-                screen.textContent = parseFloat((previousNumber / currentNumber).toFixed(4))
+                screen.textContent = parseFloat(Math.round((previousNumber / currentNumber)*10000)/10000)
         }
         operation = ""
-        miniScreen.textContent += "="
+        miniScreen.textContent += " = "
     }
 }
 
