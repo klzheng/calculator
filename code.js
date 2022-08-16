@@ -8,9 +8,21 @@ const screen = document.querySelector(".screen")
 
 numberButtons.forEach((number) => number.addEventListener("click", () => appendNumber(number)))
 
+
 function appendNumber(number) {
-    console.log(typeof(number.value))
     screen.textContent += number.value
+    if (miniScreen.textContent.includes("=") === false) {
+        miniScreen.textContent += number.value
+    } 
+    
+}
+
+function deleteInput() {
+    screen.textContent = screen.textContent.slice(0,-1)
+    if (miniScreen.textContent.includes("=") === false) {
+        miniScreen.textContent = miniScreen.textContent.slice(0,-1)
+    }
+    
 }
 
 function clearDisplay() {
@@ -23,65 +35,83 @@ function clearDisplay() {
 }
 
 function add() {
-    if (operation == "") {
-        previousNumber = parseInt(screen.textContent)
-        screen.textContent = ""
-        miniScreen.textContent += "+"
-        operation = "add"
-    } else {
-        operator()
+    console.log()
+    if (miniScreen.textContent.includes("+") === false || miniScreen.textContent.charAt(miniScreen.textContent.length-1) != "+") {
+        if (operation == "") {
+            previousNumber = Number(screen.textContent)
+            miniScreen.textContent = screen.textContent
+            screen.textContent = ""
+            miniScreen.textContent += "+"
+            operation = "add"
+        } else {
+            operator()
+        }
     }
+    
 }
 
 function subtract() {
-    if (operation == "") {
-        previousNumber = parseInt(screen.textContent)
-        screen.textContent = ""
-        miniScreen.textContent += "-"
-        operation = "subtract"
-    } else {
-        operator()
+    if (miniScreen.textContent.includes("-") === false) {
+        if (operation == "") {
+            previousNumber = Number(screen.textContent)
+            miniScreen.textContent = screen.textContent
+            screen.textContent = ""
+            miniScreen.textContent += "-"
+            operation = "subtract"
+        } else {
+            operator()
+        }
     }
+    
 }
 
 function multiply() {
-    if (operation == "") {
-        previousNumber = parseInt(screen.textContent)
-        screen.textContent = ""
-        miniScreen.textContent += "*"
-        operation = "multiply"
-    } else {
-        operator()
+    if (miniScreen.textContent.includes("*") === false) {
+        if (operation == "") {
+            previousNumber = Number(screen.textContent)
+            miniScreen.textContent = screen.textContent
+            screen.textContent = ""
+            miniScreen.textContent += "*"
+            operation = "multiply"
+        } else {
+            operator()
+        }
     }
 }
 
 function divide() {
-    if (operation == "") {
-        previousNumber = parseInt(screen.textContent)
-        screen.textContent = ""
-        miniScreen.textContent += "/"
-        operation = "divide"
-    } else {
-        operator()
+    if (miniScreen.textContent.includes("/") === false) {
+        if (operation == "") {
+            previousNumber = Number(screen.textContent)
+            miniScreen.textContent = screen.textContent
+            screen.textContent = ""
+            miniScreen.textContent += "/"
+            operation = "divide"
+        } else {
+            operator()
+        }
     }
 }
 
 function operator() {
-    currentNumber = (parseInt(screen.textContent))
-    switch (operation) {
-        case ("add"): 
-            screen.textContent = (previousNumber + currentNumber)
-            break;
-        case ("subtract"):
-            screen.textContent = (previousNumber - currentNumber)
-            break;
-        case ("multiply"):
-            screen.textContent = (previousNumber * currentNumber)
-            break;
-        case ("divide"):
-            screen.textContent = (previousNumber / currentNumber)
+    currentNumber = (Number(screen.textContent))
+    if (miniScreen.textContent.includes("=") === false) {
+        switch (operation) {
+            case ("add"): 
+                screen.textContent = (previousNumber + currentNumber)
+                break;
+            case ("subtract"):
+                screen.textContent = (previousNumber - currentNumber)
+                break;
+            case ("multiply"):
+                screen.textContent = (previousNumber * currentNumber)
+                break;
+            case ("divide"):
+                screen.textContent = (previousNumber / currentNumber)
+        }
+        operation = ""
+        miniScreen.textContent += "="
     }
-    operation = ""
-    miniScreen.textContent = screen.textContent
+    
 }
 
