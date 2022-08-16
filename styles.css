@@ -1,0 +1,32 @@
+.display {
+    border: 2px solid darkslategray;
+    margin: auto;
+    margin-top: 50px;
+    width: 400px;
+    height: 150px;
+    position: relative;
+}
+
+.screen {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+}
+
+.calculator {
+    border: 2px solid darkslategray;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 400px;
+    height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    text-align: center;
+    align-items: center;
+}
+
+.wide {
+    grid-column: span 2;
+}
+
