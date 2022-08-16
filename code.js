@@ -151,16 +151,16 @@ function evaluate() {
     if (miniScreen.textContent.includes("=") === false && operatorCheck() && operatorInCheck()) {
         switch (operation) {
             case ("add"): 
-                screen.textContent = parseFloat((previousNumber + currentNumber).toFixed(5))
+                screen.textContent = parseFloat((previousNumber + currentNumber).toFixed(8))
                 break;
             case ("subtract"):
-                screen.textContent = parseFloat((previousNumber - currentNumber).toFixed(5))
+                screen.textContent = parseFloat((previousNumber - currentNumber).toFixed(8))
                 break;
             case ("multiply"):
-                screen.textContent = parseFloat((previousNumber * currentNumber).toFixed(5))
+                screen.textContent = parseFloat((previousNumber * currentNumber).toFixed(8))
                 break;
             case ("divide"):
-                screen.textContent = parseFloat((previousNumber / currentNumber).toFixed(5))
+                screen.textContent = parseFloat((previousNumber / currentNumber).toFixed(8))
         }
         operation = ""
         miniScreen.textContent += " = "
