@@ -14,8 +14,8 @@ function appendNumber(number) {
 }
 
 function clearDisplay() {
-    document.querySelector('.screen').textContent = ""
-    document.querySelector('.mini-screen').textContent = ""
+    screen.textContent = ""
+    miniScreen.textContent = ""
     previousNumber = ""
     currentNumber = ""
     operation = ""
@@ -24,9 +24,9 @@ function clearDisplay() {
 
 function add() {
     if (operation == "") {
-        previousNumber = parseInt(document.querySelector(".screen").textContent)
-        document.querySelector(".screen").textContent = ""
-        document.querySelector(".mini-screen").textContent += "+"
+        previousNumber = parseInt(screen.textContent)
+        screen.textContent = ""
+        miniScreen.textContent += "+"
         operation = "add"
     } else {
         operator()
@@ -35,9 +35,9 @@ function add() {
 
 function subtract() {
     if (operation == "") {
-        previousNumber = parseInt(document.querySelector(".screen").textContent)
-        document.querySelector(".screen").textContent = ""
-        document.querySelector(".mini-screen").textContent += "-"
+        previousNumber = parseInt(screen.textContent)
+        screen.textContent = ""
+        miniScreen.textContent += "-"
         operation = "subtract"
     } else {
         operator()
@@ -46,9 +46,9 @@ function subtract() {
 
 function multiply() {
     if (operation == "") {
-        previousNumber = parseInt(document.querySelector(".screen").textContent)
-        document.querySelector(".screen").textContent = ""
-        document.querySelector(".mini-screen").textContent += "*"
+        previousNumber = parseInt(screen.textContent)
+        screen.textContent = ""
+        miniScreen.textContent += "*"
         operation = "multiply"
     } else {
         operator()
@@ -57,9 +57,9 @@ function multiply() {
 
 function divide() {
     if (operation == "") {
-        previousNumber = parseInt(document.querySelector(".screen").textContent)
-        document.querySelector(".screen").textContent = ""
-        document.querySelector(".mini-screen").textContent += "/"
+        previousNumber = parseInt(screen.textContent)
+        screen.textContent = ""
+        miniScreen.textContent += "/"
         operation = "divide"
     } else {
         operator()
@@ -67,21 +67,21 @@ function divide() {
 }
 
 function operator() {
-    currentNumber = (parseInt(document.querySelector(".screen").textContent))
+    currentNumber = (parseInt(screen.textContent))
     switch (operation) {
         case ("add"): 
-            document.querySelector(".screen").textContent = (previousNumber + currentNumber)
+            screen.textContent = (previousNumber + currentNumber)
             break;
         case ("subtract"):
-            document.querySelector(".screen").textContent = (previousNumber - currentNumber)
+            screen.textContent = (previousNumber - currentNumber)
             break;
         case ("multiply"):
-            document.querySelector(".screen").textContent = (previousNumber * currentNumber)
+            screen.textContent = (previousNumber * currentNumber)
             break;
         case ("divide"):
-            document.querySelector(".screen").textContent = (previousNumber / currentNumber)
+            screen.textContent = (previousNumber / currentNumber)
     }
     operation = ""
-    document.querySelector(".mini-screen").textContent = document.querySelector(".screen").textContent
+    miniScreen.textContent = screen.textContent
 }
 
