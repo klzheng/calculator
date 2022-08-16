@@ -33,7 +33,7 @@ function appendNumber(number) {
         screen.textContent = ""
         calculated = "on"
     }
-    if (screen.textContent.length < 12){
+    if (screen.textContent.length < 14){
         screen.textContent += number
         if (miniScreen.textContent.includes("=") === false) {
             miniScreen.textContent += number

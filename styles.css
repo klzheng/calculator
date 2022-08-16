@@ -11,30 +11,39 @@ body {
 }
 
 .display {
-    border: 2px solid white;
+    border: 2px solid rgba(255, 255, 255, 0);
     margin: auto;
-    margin-top: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 10px;
     width: 400px;
     height: 125px;
     position: relative;
+    border-radius: 10px;
+    background-color: #2C3333;
+    
 }
 
 .mini-screen {
     position: absolute;
-    left: 15px;
+    right: 10px;
     top: -10px;
+    font-size: 18px;
+    color: rgba(250, 243, 243, 0.733);
 }
 
 .screen {
     position: absolute;
     bottom: -40px;
-    right: 15px;
+    right: 10px;
+    text-align: right;
     font-size: 43px;
+    inline-size: 360px;
+    overflow-wrap: break-word;
 }
 
 .calculator {
-    border: 2px solid white;
+    border: 2px solid rgba(255, 255, 255, 0);
     margin: 0 auto;
     margin-bottom: 50px;
     width: 400px;
@@ -45,6 +54,18 @@ body {
     align-items: center;
     gap: 15px;
     padding: 10px;
+    border-radius: 10px;
+    background-color: #2C3333;
+}
+
+.calculator-frame {
+    margin: 0 auto;
+    width: 440px;
+    height: 700px;
+    border: 2px solid;
+    border-radius: 10px;
+    background-color: #92a9bd52;
+    border:2px solid rgba(255, 255, 255, 0.404)
 }
 
 .wide {
@@ -56,6 +77,14 @@ body {
     height: 100%;
     margin: 0 auto;
     background-color: #395B64;
-    border: #A5C9CA 1px solid;
+    border: #7aa2a300 3px solid;
+    border-radius: 10px;
 }
 
+.clear {
+    background-color: #a89ffdb6;
+}
+
+.delete {
+    background-color: #db5959;
+}
