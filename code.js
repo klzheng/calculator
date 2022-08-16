@@ -1,5 +1,17 @@
-let previousNumber = ""
-let operation = ""
+let previousNumber = "";
+let currentNumber = "";
+let operation = "";
+
+const numberButtons = document.querySelectorAll(".number")
+const miniScreen = document.querySelector(".mini-screen")
+const screen = document.querySelector(".screen")
+
+numberButtons.forEach((number) => number.addEventListener("click", () => appendNumber(number)))
+
+function appendNumber(number) {
+    console.log(typeof(number.value))
+    screen.textContent += number.value
+}
 
 function clearDisplay() {
     document.querySelector('.screen').textContent = ""

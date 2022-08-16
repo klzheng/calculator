@@ -22,11 +22,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    text-align: center;
     align-items: center;
 }
 
 .wide {
     grid-column: span 2;
+}
+
+.button {
+    width: 50px;
+    margin: 0 auto;
 }
 
