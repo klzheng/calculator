@@ -3,6 +3,8 @@ let currentNumber = "";
 let operation = "";
 let calculated = "on";
 
+
+/** Declaring variables from document elements*/
 const numberButtons = document.querySelectorAll(".number")
 const operatorButtons = document.querySelectorAll(".operator")
 const miniScreen = document.querySelector(".mini-screen")
@@ -17,6 +19,7 @@ const divideButton = document.querySelector(".divide")
 const evaluateButton = document.querySelector(".evaluate")
 
 
+/** Adding 'click' event listeners to declared variables */
 decimalButton.addEventListener("click", () => addDecimal())
 addButton.addEventListener("click", () => add())
 subtractButton.addEventListener("click", () => subtract())
@@ -28,6 +31,7 @@ clearButton.addEventListener("click", () => clearAll())
 numberButtons.forEach((number) => number.addEventListener("click", () => appendNumber(number.value)))
 
 
+/** Appends the clicked number to the display on press */
 function appendNumber(number) {
     if (screen.textContent == "0" || calculated == "off"){
         screen.textContent = ""
@@ -43,6 +47,8 @@ function appendNumber(number) {
     }
 }
 
+
+/** Deletes the latest number on press */
 function deleteInput() {
     screen.textContent = screen.textContent.slice(0,-1)
     if (miniScreen.textContent.slice(-1) == " ") {
@@ -56,6 +62,8 @@ function deleteInput() {
     }
 }
 
+
+/** Clears display values and number stores  */
 function clearAll() {
     screen.textContent = ""
     miniScreen.textContent = ""
@@ -64,12 +72,17 @@ function clearAll() {
     operation = ""
 }
 
+
+/** Stores displayed number in memory and displays it on mini-display, 
+ *  then clears the main display */
 function storeSetClearDisplay() {
     previousNumber = Number(screen.textContent)
     miniScreen.textContent = screen.textContent
     screen.textContent = ""
 }
 
+
+/** Adds decimal point to number */
 function addDecimal() {
     if (screen.textContent.includes(".") == false) {
         if (screen.textContent == "") {
@@ -82,6 +95,8 @@ function addDecimal() {
     }
 }
 
+
+/** Checks if the last input is an operator and returns boolean */
 function operatorCheck() {
     if (miniScreen.textContent.charAt(miniScreen.textContent.length-2) != "+" && 
         miniScreen.textContent.charAt(miniScreen.textContent.length-2) != "−" && 
@@ -92,6 +107,8 @@ function operatorCheck() {
     return false
 }
 
+
+/** Checks display to make sure there is no operator in it and returns boolean */
 function operatorInCheck() {
     if (screen.textContent.includes("+") == false && 
         screen.textContent.includes("−") == false && 
@@ -102,6 +119,8 @@ function operatorInCheck() {
     return false
 }
 
+
+/** Prepares numbers to be added */
 function add() {
     if (operatorCheck()) {
         if (operation == "") {
@@ -113,6 +132,8 @@ function add() {
     }
 }
 
+
+/** Prepares numbers to be subtracted */
 function subtract() {
     if (operatorCheck()){
         if (operation == "") {
@@ -124,6 +145,8 @@ function subtract() {
     }
 }
 
+
+/** Prepares numbers to be multiplied */
 function multiply() {
     if (operatorCheck()) {
         if (operation == "") {
@@ -135,6 +158,8 @@ function multiply() {
     }
 }
 
+
+/** Prepares numbers to be divided */
 function divide() {
     if (operatorCheck()) {
         if (operation == "") {
@@ -146,6 +171,9 @@ function divide() {
     }
 }
 
+
+/** Evaluates the expression by checking which operation was previously called
+ *  and performing the operation */
 function evaluate() {
     currentNumber = (Number(screen.textContent))
     if (miniScreen.textContent.includes("=") === false && operatorCheck() && operatorInCheck()) {
@@ -169,6 +197,7 @@ function evaluate() {
 }
 
 
+/** Adds keyboard support */
 window.addEventListener("keydown", (event) => {
     let button = event.key
     switch (isNaN(button)) {

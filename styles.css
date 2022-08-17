@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+/* Overall */
 * {
     font-family: Roboto, sans-serif;
     font-size: 22px;
@@ -10,6 +11,8 @@ body {
     background-color: #2C3333;
 }
 
+
+/* Calculator Display */
 .display {
     border: 2px solid rgba(255, 255, 255, 0);
     margin: auto;
@@ -21,7 +24,6 @@ body {
     position: relative;
     border-radius: 10px;
     background-color: #2C3333;
-    
 }
 
 .mini-screen {
@@ -42,6 +44,8 @@ body {
     overflow-wrap: break-word;
 }
 
+
+/* Calculator Body */
 .calculator {
     border: 2px solid rgba(255, 255, 255, 0);
     margin: 0 auto;
@@ -58,6 +62,8 @@ body {
     background-color: #2C3333;
 }
 
+
+/* Calculator Frame */
 .calculator-frame {
     margin: 0 auto;
     width: 440px;
@@ -68,6 +74,8 @@ body {
     border:2px solid rgba(255, 255, 255, 0.404)
 }
 
+
+/* Calculator Buttons and Effects */
 .wide {
     grid-column: span 2;
 }
