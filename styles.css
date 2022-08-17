@@ -7,8 +7,12 @@
     color: white;   
 }
 
-body {
+html {
     transform: scale(.85);
+}
+
+body {
+    
     background-color: #2C3333;
     height: 90vh; 
     display: flex;
@@ -115,7 +119,9 @@ body {
 
 /* Footer */
 footer {
-    margin-top: 7vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
     text-align: center;
 }
 
