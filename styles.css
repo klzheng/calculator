@@ -111,12 +111,11 @@ body {
     box-shadow: 3px 3px 40px 1px rgba(39, 39, 39, 0.534)
 }
 
-/* Footer */
 
+/* Footer */
 footer {
     margin-top: auto;
     text-align: center;
-    
 }
 
 .fa-github {
