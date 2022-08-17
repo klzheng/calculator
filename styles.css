@@ -5,16 +5,15 @@
     font-family: Roboto, sans-serif;
     font-size: 22px;
     color: white;   
-    
 }
 
 body {
     transform: scale(.85);
-    height: 100vh; 
     background-color: #2C3333;
+    height: 90vh; 
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 
@@ -116,12 +115,8 @@ body {
 
 /* Footer */
 footer {
-    margin-top: auto;
+    margin-top: 7vh;
     text-align: center;
-}
-
-footer p {
-    margin-bottom: 0;
 }
 
 .fa-github {
