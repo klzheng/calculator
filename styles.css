@@ -9,6 +9,10 @@
 
 body {
     background-color: #2C3333;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
 }
 
 
@@ -105,4 +109,21 @@ body {
 .button:active {
     transform: translateY(1px);
     box-shadow: 3px 3px 40px 1px rgba(39, 39, 39, 0.534)
+}
+
+/* Footer */
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    
+}
+
+.fa-github {
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+  
+.fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
 }
